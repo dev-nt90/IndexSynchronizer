@@ -64,12 +64,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
 	pattern: "{controller=IndexSync}/{action=IndexSync}/{id?}");
-app.MapControllerRoute(
-    name: "IndexSync",
-    pattern: "{controller=IndexSync}/{action=IndexSync}/{id?}");
 
 app.MapRazorPages();
-app.MapHub<ChatHub>("/chatHub");
 app.MapHub<IndexSyncHub>("/synchub");
 app.MapHub<IndexPreviewHub>("/previewhub");
 
