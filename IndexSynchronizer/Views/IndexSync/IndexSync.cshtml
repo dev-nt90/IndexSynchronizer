@@ -1,0 +1,135 @@
+﻿@{
+	ViewData["Title"] = "Index Synchronizer";
+}
+
+<head>
+	<link rel="stylesheet" type="text/css" href="~/css/IndexSync.css" />
+</head>
+
+<label for="credentials-container"><b>Server Information</b></label>
+<div class="container credentials-container" id="credentials-container">
+	
+	<div class="container" id="credentials-container-source">
+		<span><b>Source Database</b></span>
+
+		<!-- User -->
+		<div>
+			<label for="userInputSource">User:</label>
+			<input type="text" id="userInputSource" name="userInputSource" placeholder="User..." />
+		</div>
+
+		<!-- Password -->
+		<div>
+			<label for="passwordSource">Password:</label>
+			<input type="password" id="passwordInputSource" name="passwordSource" placeholder="Password..." />
+			<input type="checkbox" id="showPasswordSource" class="show-password" data-target="passwordInputSource" />
+			<label for="showPasswordSource" id="showPasswordLabelSource">Show Password</label>
+		</div>
+
+		<!-- Server -->
+		<div>
+			<label for="serverInputSource">Server:</label>
+			<input type="text" id="serverInputSource" name="serverInputSource" placeholder="e.g. localhost/mssql2019" />
+		</div>
+
+		<!-- Database -->
+		<div>
+			<label for="databaseInputSource">Database:</label>
+			<input type="text" id="databaseInputSource" name="databaseInputSource" placeholder="e.g. AdventureWorks" />
+		</div>
+
+		<!-- Table -->
+		<div>
+			<label for="tableInputSource">Table:</label>
+			<input type="text" id="tableInputSource" name="tableInputSource" placeholder="e.g. Users" />
+		</div>
+
+		<!-- Preview button -->
+		<div>
+			<input type="button" id="previewButtonSource" value="Preview"/>
+		</div>
+
+		<!-- Synchronize button -->
+		<div>
+			<input type="button" id="synchronizeButton" value="Synchronize" />
+		</div>
+
+	</div>
+	
+	<div class="container" id="credentials-container-target">
+		<span><b>Target Database</b></span>
+
+		<!-- User -->
+		<div>
+			<label for="userInputTarget">User: </label>
+			<input type="text" id="userInputTarget" name="userInputTarget" placeholder="User..." />
+		</div>
+
+		<!-- Password -->
+		<div>
+			<label for="password">Password: </label>
+			<input type="password" id="passwordInputTarget" name="passwordTarget" placeholder="Password..." />
+			<input type="checkbox" id="showPasswordTarget" class="show-password" data-target="passwordInputTarget" />
+			<label for="showPasswordTarget" id="showPasswordLabelTarget">Show Password</label>
+		</div>
+		
+		<!-- Server -->
+		<div>
+			<label for="serverInputTarget">Server:</label>
+			<input type="text" id="serverInputTarget" name="serverInputTarget" placeholder="e.g. localhost/mssql2019" />
+		</div>
+
+		<!-- Database -->
+		<div>
+			<label for="databaseInputTarget">Database:</label>
+			<input type="text" id="databaseInputTarget" name="databaseInputTarget" placeholder="e.g. AdventureWorks" />
+		</div>
+
+		<!-- Table -->
+		<div>
+			<label for="tableInputTarget">Table:</label>
+			<input type="text" id="tableInputTarget" name="tableInputTarget" placeholder="e.g. Users" />
+		</div>
+
+		<!-- Preview button -->
+		<div>
+			<input type="button" id="previewButtonTarget" value="Preview" />
+		</div>
+		
+	</div>
+
+</div>
+
+<br />
+
+<label for="status-indicator">Last sync status: </label>
+<div class="status-indicator" id="status-indicator">
+	<span class="success-icon">✔️</span>
+	<span class="failure-icon">❌</span>
+	<span class="neutral-icon">N/A</span>
+</div>
+
+<br/>
+
+<label for="indexDefinitions"><b>Index Definitions</b></label>
+<div class="scrollable-container definitions-container" id="indexDefinitions">
+	
+	<label for="indexArea1">Index Definition(s) A</label>
+	<div class="scrollable-text-area" id="indexArea1">
+		
+	</div>
+
+	<label for="indexArea2">Index Definition(s) B</label>
+	<div class="scrollable-text-area" id="indexArea2">
+		
+	</div>
+
+</div>
+
+
+<script src="~/js/shared/password-toggle.js"></script>
+<script src="~/js/index-sync/PublishPreviewRequest.js"></script>
+<script src="~/js/index-sync/PublishSyncRequest.js"></script>
+<script src="~/js/index-sync/SubscribePreviewResponse.js"></script>
+<script src="~/js/index-sync/SubscribeSyncResponse.js"></script>
+<script src="~/js/index-sync/update-status-indicator.js"></script>

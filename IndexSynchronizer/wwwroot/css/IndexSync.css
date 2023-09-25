@@ -1,0 +1,53 @@
+﻿
+/* Define the container for the two text areas */
+.scrollable-container {
+    display: flex; /* Use flexbox for side-by-side layout */
+    justify-content: center;
+
+}
+
+/* Style for each text area */
+.scrollable-text-area {
+    width: 50%; /* Set the width to 50% for side-by-side layout */
+    max-height: 300px; /* Set a maximum height for scrollability */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+    border: 1px solid #000000; /* Optional: Add a border for styling */
+    padding: 10px; /* Optional: Add padding for spacing */
+}
+
+.credentials-container{
+    display: flex;
+    border: 1px solid #000000;
+}
+.inner-credentials-container{
+    border: 1px dashed #000000;
+}
+
+.definitions-container {
+    display: flex;
+    border: 1px solid #000000;
+}
+
+/* Success icon */
+.success-icon {
+    color: green; /* Green color for success */
+    font-size: 24px;
+}
+
+/* Failure icon */
+.failure-icon {
+    color: red; /* Red color for failure */
+    font-size: 24px;
+}
+
+/* neutral icon */
+.neutral-icon {
+    color: gray; /* Red color for failure */
+    font-size: 16px;
+}
+
+/* Status indicator container */
+.status-indicator {
+    display: inline-block;
+    margin-right: 5px; /* Add spacing between the icon and text if needed */
+}
