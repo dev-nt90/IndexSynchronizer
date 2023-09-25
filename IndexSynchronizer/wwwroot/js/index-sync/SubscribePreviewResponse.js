@@ -1,19 +1,16 @@
-﻿// Connect to the "preview" hub
-const previewConnection = new signalR.HubConnectionBuilder()
-    .withUrl("/previewhub")
-    .configureLogging(signalR.LogLevel.Information)
-    .build();
-
-// Subscribe to preview responses for Function A
-previewConnection.on("PreviewResponseA", (response) => {
-    // Handle the preview response for Function A
-    console.log("Received preview response for Function A:", response);
-    // Update the UI for Function A
+﻿// see signalr-hub-init.js
+// Subscribe to preview responses for Source server
+previewConnection.on("PreviewResponseSource", (response) => {
+    // Handle the preview response for Source
+    console.log("Received preview response for Source:", response);
+    var indexAreaSource = document.getElementById('indexAreaSource');
+    indexAreaSource.textContent = response;
 });
 
-// Subscribe to preview responses for Function B
+// Subscribe to preview responses for Target
 previewConnection.on("PreviewResponseB", (response) => {
-    // Handle the preview response for Function B
-    console.log("Received preview response for Function B:", response);
-    // Update the UI for Function B
+    // Handle the preview response for Target
+    console.log("Received preview response for Target:", response);
+    var indexAreaTarget = document.getElementById('indexAreaTarget');
+    indexAreaTarget.textContent = response;
 });

@@ -1,9 +1,4 @@
-﻿
-const syncConnection = new signalR.HubConnectionBuilder()
-    .withUrl("/synchub")
-    .configureLogging(signalR.LogLevel.Information)
-    .build();
-
+﻿// see signalr-hub-init.js
 syncConnection.on("SyncResponse", (response) => {
     updateStatusIndicator(true);
 

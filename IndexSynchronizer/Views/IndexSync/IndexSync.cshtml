@@ -9,6 +9,7 @@
 <label for="credentials-container"><b>Server Information</b></label>
 <div class="container credentials-container" id="credentials-container">
 	
+	<!-- source -->
 	<div class="container" id="credentials-container-source">
 		<span><b>Source Database</b></span>
 
@@ -21,7 +22,13 @@
 		<!-- Password -->
 		<div>
 			<label for="passwordSource">Password:</label>
-			<input type="password" id="passwordInputSource" name="passwordSource" placeholder="Password..." />
+			<input 
+				type="password" 
+				id="passwordInputSource" 
+				name="passwordSource" 
+				placeholder="Password..." 
+				autocomplete="off" 
+				onfocus="this.setAttribute('autocomplete', 'new-password');" />
 			<input type="checkbox" id="showPasswordSource" class="show-password" data-target="passwordInputSource" />
 			<label for="showPasswordSource" id="showPasswordLabelSource">Show Password</label>
 		</div>
@@ -56,6 +63,7 @@
 
 	</div>
 	
+	<!-- target -->
 	<div class="container" id="credentials-container-target">
 		<span><b>Target Database</b></span>
 
@@ -68,7 +76,13 @@
 		<!-- Password -->
 		<div>
 			<label for="password">Password: </label>
-			<input type="password" id="passwordInputTarget" name="passwordTarget" placeholder="Password..." />
+			<input 
+				type="password" 
+				id="passwordInputTarget" 
+				name="passwordTarget" 
+				placeholder="Password..." 
+				autocomplete="off" 
+				onfocus="this.setAttribute('autocomplete', 'new-password');" />
 			<input type="checkbox" id="showPasswordTarget" class="show-password" data-target="passwordInputTarget" />
 			<label for="showPasswordTarget" id="showPasswordLabelTarget">Show Password</label>
 		</div>
@@ -114,20 +128,22 @@
 <label for="indexDefinitions"><b>Index Definitions</b></label>
 <div class="scrollable-container definitions-container" id="indexDefinitions">
 	
-	<label for="indexArea1">Index Definition(s) A</label>
-	<div class="scrollable-text-area" id="indexArea1">
+	<label for="indexArea1">Index Definition(s) Source</label>
+	<div class="scrollable-text-area" id="indexAreaSource">
 		
 	</div>
 
-	<label for="indexArea2">Index Definition(s) B</label>
-	<div class="scrollable-text-area" id="indexArea2">
+	<label for="indexArea2">Index Definition(s) Target</label>
+	<div class="scrollable-text-area" id="indexAreaTarget">
 		
 	</div>
 
 </div>
 
-
-<script src="~/js/shared/password-toggle.js"></script>
+<script src="~/js/signalr/signalr.js"></script>
+<script src="~/js/index-sync/signalr-hub-init.js"></script>
+<script src="~/js/index-sync/password-toggle.js"></script>
+<script src="~/js/index-sync/ConnectionDetails.js"></script>
 <script src="~/js/index-sync/PublishPreviewRequest.js"></script>
 <script src="~/js/index-sync/PublishSyncRequest.js"></script>
 <script src="~/js/index-sync/SubscribePreviewResponse.js"></script>

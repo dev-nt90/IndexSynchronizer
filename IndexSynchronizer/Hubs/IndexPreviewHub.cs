@@ -12,11 +12,11 @@ namespace IndexSynchronizer.Hubs
 
 			if (details.IsSourceDatabase)
 			{
-				await Clients.Caller.SendAsync("PreviewResponseA", data);
+				await Clients.Caller.SendAsync("PreviewResponseSource", data);
 			}
 			else
 			{
-				await Clients.Caller.SendAsync("PreviewResponseB", data);
+				await Clients.Caller.SendAsync("PreviewResponseTarget", data);
 			}
 		}
 	}

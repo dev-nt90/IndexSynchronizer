@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <Folder Include="Api\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="wwwroot\js\shared\" />
     <Folder Include="wwwroot\js\signalr\dist\browser\" />
     <Folder Include="wwwroot\lib\microsoft\signalr\dist\browser\" />
   </ItemGroup>
