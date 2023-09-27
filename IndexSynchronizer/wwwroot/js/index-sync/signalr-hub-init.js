@@ -1,11 +1,11 @@
 ﻿// TODO: dom-constants.js
 const syncConnection = new signalR.HubConnectionBuilder()
-    .withUrl("/synchub")
+    .withUrl("/IndexSyncHub")
     .configureLogging(signalR.LogLevel.Information)
     .withAutomaticReconnect()
     .build();
 const previewConnection = new signalR.HubConnectionBuilder()
-    .withUrl("/previewhub")
+    .withUrl("/IndexPreviewHub")
     .configureLogging(signalR.LogLevel.Information)
     .withAutomaticReconnect()
     .build();

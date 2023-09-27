@@ -4,9 +4,10 @@ namespace IndexSynchronizer.Controllers
 {
     public class IndexSyncController : Controller
     {
-        public IndexSyncController()
+        private readonly ILogger logger;
+        public IndexSyncController(ILogger<IndexSyncController> logger)
         {
-            
+            this.logger = logger;
         }
 
 		public IActionResult Index()
@@ -16,7 +17,15 @@ namespace IndexSynchronizer.Controllers
 
 		public IActionResult IndexSync()
 		{
-			return View();
+            try
+            {
+                return View();
+            }
+            catch(Exception ex) 
+            {
+                logger.LogError(ex, "An unexpected exception occurred in the IndexSyncController");
+                throw;
+            }
 		}
 
 		public IActionResult Updates()

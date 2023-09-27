@@ -2,6 +2,7 @@
 {
 	public class ConnectionDetails
 	{
+		public ConnectionDetails() { }
 		public String Username { get; set; }
 		public String Password { get; set; }
 		public String ServerName { get; set; }

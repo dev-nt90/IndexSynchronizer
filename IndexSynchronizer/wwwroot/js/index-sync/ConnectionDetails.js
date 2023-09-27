@@ -1,10 +1,10 @@
 ﻿class ConnectionDetails {
     constructor(username, password, server, database, tablename, isSource) {
-        this.username = username;
-        this.password = password;
-        this.server = server;
-        this.database = database;
-        this.tablename = tablename;
-        this.isSource = isSource;
+        this.Username = username.toString();
+        this.Password = password.toString();
+        this.ServerName = server.toString();
+        this.DatabaseName = database.toString();
+        this.TableName = tablename.toString();
+        this.IsSourceDatabase = isSource;
     }
 }

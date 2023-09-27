@@ -40,9 +40,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-builder.Services.AddSignalR();
+builder.Services.AddSignalR(options => { options.EnableDetailedErrors = true; });
 builder.Services.AddHostedService<IndexSynchronizerService>();
-
 
 var app = builder.Build();
 
@@ -66,7 +65,7 @@ app.MapControllerRoute(
 	pattern: "{controller=IndexSync}/{action=IndexSync}/{id?}");
 
 app.MapRazorPages();
-app.MapHub<IndexSyncHub>("/synchub");
-app.MapHub<IndexPreviewHub>("/previewhub");
+app.MapHub<IndexSyncHub>("/IndexSyncHub");
+app.MapHub<IndexPreviewHub>("/IndexPreviewHub");
 
 app.Run();

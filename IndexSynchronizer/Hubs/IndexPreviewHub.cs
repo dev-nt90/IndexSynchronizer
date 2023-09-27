@@ -1,23 +1,49 @@
 ﻿using IndexSynchronizer.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
 namespace IndexSynchronizer.Hubs
 {
 	public class IndexPreviewHub : Hub
 	{
-		public async Task PreviewRequest(ConnectionDetails details)
+		private readonly ILogger logger;
+		public IndexPreviewHub(ILogger<IndexPreviewHub> logger)
 		{
-			var data = String.Empty;
-			// TODO: fire to preview service
+			this.logger = logger;
+		}
 
-			if (details.IsSourceDatabase)
+		public async Task<String> PreviewRequestSource(ConnectionDetails details)
+		{
+			try
 			{
-				await Clients.Caller.SendAsync("PreviewResponseSource", data);
+				var data = String.Empty;
+
+				return String.Empty;
 			}
-			else
+			catch (Exception ex) 
 			{
-				await Clients.Caller.SendAsync("PreviewResponseTarget", data);
+				this.logger.LogError(ex, "An unexpected exception occurred while requesting the source preview");
+				throw;
 			}
+
+			return String.Empty;
+		}
+
+		public async Task<String> PreviewRequestTarget(ConnectionDetails details)
+		{
+			try
+			{
+				var data = String.Empty;
+
+				return String.Empty;
+			}
+			catch (Exception ex)
+			{
+				this.logger.LogError(ex, "An unexpected exception occurred while requesting the target preview");
+				throw;
+			}
+
+			return String.Empty;
 		}
 	}
 }
