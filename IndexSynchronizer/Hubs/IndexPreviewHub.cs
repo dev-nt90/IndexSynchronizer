@@ -12,38 +12,30 @@ namespace IndexSynchronizer.Hubs
 			this.logger = logger;
 		}
 
-		public async Task<String> PreviewRequestSource(ConnectionDetails details)
+		public async Task PreviewRequestSource(ConnectionDetails details)
 		{
 			try
 			{
-				var data = String.Empty;
-
-				return String.Empty;
+				await Clients.Caller.SendAsync("PreviewResponseSource", "Preview response source");
 			}
 			catch (Exception ex) 
 			{
 				this.logger.LogError(ex, "An unexpected exception occurred while requesting the source preview");
 				throw;
 			}
-
-			return String.Empty;
 		}
 
-		public async Task<String> PreviewRequestTarget(ConnectionDetails details)
+		public async Task PreviewRequestTarget(ConnectionDetails details)
 		{
 			try
 			{
-				var data = String.Empty;
-
-				return String.Empty;
+				await Clients.Caller.SendAsync("PreviewResponseTarget", "Preview response target");
 			}
 			catch (Exception ex)
 			{
 				this.logger.LogError(ex, "An unexpected exception occurred while requesting the target preview");
 				throw;
 			}
-
-			return String.Empty;
 		}
 	}
 }
