@@ -1,7 +1,9 @@
 --retrieve indexes 
 --TODO: figure out deployment model
+--TODO: schema support
 
-DECLARE @TableName SYSNAME;
+--NOTE: @TableName is injected at runtime
+CREATE TABLE #Indexes (IndexDefinition NVARCHAR(MAX));
 
 --foreach index in tablename
 DECLARE @CurrentIndexName SYSNAME;
@@ -60,14 +62,19 @@ BEGIN
 		WHERE i.name = @CurrentIndexName
 		FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)');
 
-	PRINT @SQL;
+	IF(@SQL IS NOT NULL)
+	BEGIN
+		INSERT #Indexes
+		SELECT @SQL;
+	END;
+		
 
 	FETCH NEXT FROM IndexNameCursor
 	INTO @CurrentIndexName
 END;
 
+SELECT IndexDefinition 
+FROM #Indexes
+
 CLOSE IndexNameCursor;
 DEALLOCATE IndexNameCursor;
-GO
-
-

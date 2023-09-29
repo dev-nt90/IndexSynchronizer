@@ -1,4 +1,5 @@
 ﻿using IndexSynchronizer.Models;
+using IndexSynchronizer.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
@@ -7,16 +8,20 @@ namespace IndexSynchronizer.Hubs
 	public class IndexPreviewHub : Hub
 	{
 		private readonly ILogger logger;
-		public IndexPreviewHub(ILogger<IndexPreviewHub> logger)
+		private readonly IIndexPreviewService indexPreviewService;
+
+		public IndexPreviewHub(ILogger<IndexPreviewHub> logger, IIndexPreviewService previewService)
 		{
 			this.logger = logger;
+			this.indexPreviewService = previewService;
 		}
 
-		public async Task PreviewRequestSource(ConnectionDetails details)
+		public async Task PreviewRequestSource(ConnectionDetails connectionDetails)
 		{
 			try
 			{
-				await Clients.Caller.SendAsync("PreviewResponseSource", "Preview response source");
+				var indexPreview = await this.indexPreviewService.GetIndexDefinitionsAsync(connectionDetails);
+				await Clients.Caller.SendAsync("PreviewResponseSource", indexPreview);
 			}
 			catch (Exception ex) 
 			{
@@ -25,11 +30,12 @@ namespace IndexSynchronizer.Hubs
 			}
 		}
 
-		public async Task PreviewRequestTarget(ConnectionDetails details)
+		public async Task PreviewRequestTarget(ConnectionDetails connectionDetails)
 		{
 			try
 			{
-				await Clients.Caller.SendAsync("PreviewResponseTarget", "Preview response target");
+				var indexPreview = await this.indexPreviewService.GetIndexDefinitionsAsync(connectionDetails);
+				await Clients.Caller.SendAsync("PreviewResponseTarget", indexPreview);
 			}
 			catch (Exception ex)
 			{
