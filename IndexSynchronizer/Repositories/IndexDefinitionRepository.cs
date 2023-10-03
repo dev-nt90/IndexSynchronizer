@@ -5,8 +5,10 @@ using System.Text;
 
 namespace IndexSynchronizer.Repositories
 {
-	public class IndexPreviewRepository : IIndexPreviewRepository
+	public class IndexDefinitionRepository : IIndexDefinitionRepository
 	{
+		// TODO: this is not actually async
+		// make-it-so.gif
 		public async Task<IEnumerable<String>> GetIndexDefinitionsAsync(IConnectionDetails connectionDetails)
 		{
 			var connectionString = 
@@ -18,9 +20,11 @@ namespace IndexSynchronizer.Repositories
 
 			var query = File.ReadAllText("Scripts/GetIndexDefinitions.sql");
 
+			// TODO: make this strongly typed; e.g. List<IndexDefinition> where IndexDefinition has members including but not limited to:
+			// key columns, included columns, column order, asc/desc, etc.
+			// There's _probably_ already a library or type for this. Will _probably_ have to extend on a per-supported-database-and-version basis
 			var definitions = new List<String>();
 			
-			// TODO: make async
 			using (var connection = new SqlConnection(connectionString))
 			using (var command = new SqlCommand(query, connection))
 			{

@@ -1,4 +1,5 @@
 ﻿// initialize the status icon to the default (neutral)
+// TODO: need cancelled icon and logic
 const statusIndicator = document.querySelector('.status-indicator');
 const successIcon = statusIndicator.querySelector('.success-icon');
 const failureIcon = statusIndicator.querySelector('.failure-icon');

@@ -13,21 +13,21 @@ function publishSyncRequest(sourceData, targetData) {
 const syncButton = document.getElementById('synchronizeButton');
 
 syncButton.addEventListener('click', () => {
-    var usernameSource = document.getElementById('userInputSource');
-    var passwordSource = document.getElementById('passwordInputSource');
-    var serverSource = document.getElementById('serverInputSource');
-    var databaseSource = document.getElementById('databaseInputSource');
-    var tablenameSource = document.getElementById('tableInputSource');
+    var usernameSource = document.getElementById('userInputSource').value;
+    var passwordSource = document.getElementById('passwordInputSource').value;
+    var serverSource = document.getElementById('serverInputSource').value;
+    var databaseSource = document.getElementById('databaseInputSource').value;
+    var tablenameSource = document.getElementById('tableInputSource').value;
 
     var sourceConnectionDetails = new ConnectionDetails(usernameSource, passwordSource, serverSource, databaseSource, tablenameSource, true);
 
-    var usernameTarget = document.getElementById('userInputTarget');
-    var passwordTarget = document.getElementById('passwordInputTarget');
-    var serverTarget = document.getElementById('serverInputTarget');
-    var databaseTarget = document.getElementById('databaseInputTarget');
-    var tablenameTarget = document.getElementById('tableInputTarget');
+    var usernameTarget = document.getElementById('userInputTarget').value;
+    var passwordTarget = document.getElementById('passwordInputTarget').value;
+    var serverTarget = document.getElementById('serverInputTarget').value;
+    var databaseTarget = document.getElementById('databaseInputTarget').value;
+    var tablenameTarget = document.getElementById('tableInputTarget').value;
 
     var targetConnectionDetails = new ConnectionDetails(usernameTarget, passwordTarget, serverTarget, databaseTarget, tablenameTarget, false);
 
     publishSyncRequest(sourceConnectionDetails, targetConnectionDetails);
-})
+});

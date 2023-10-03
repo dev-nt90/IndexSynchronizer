@@ -6,9 +6,9 @@ namespace IndexSynchronizer.Services
 {
 	public class IndexPreviewService : IIndexPreviewService
 	{
-		private readonly IIndexPreviewRepository indexPreviewRepository;
+		private readonly IIndexDefinitionRepository indexPreviewRepository;
 
-		public IndexPreviewService(IIndexPreviewRepository indexPreviewRepository)
+		public IndexPreviewService(IIndexDefinitionRepository indexPreviewRepository)
 		{
 			this.indexPreviewRepository = indexPreviewRepository;
 		}

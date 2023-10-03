@@ -2,6 +2,7 @@
  * 
  * TODO:
  * 
+ * TESTS
  * *Write SQL query/procedure to output index definition of input table
  *     *Deploy sproc or keep logic internal to tool?
  *     *Support multiple database platforms? SQL Server, MySQL, Postgres? Introduces N complexity for back, maybe for middle.
@@ -42,8 +43,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR(options => { options.EnableDetailedErrors = true; });
+
 builder.Services.AddScoped<IIndexPreviewService, IndexPreviewService>();
-builder.Services.AddScoped<IIndexPreviewRepository, IndexPreviewRepository>();
+builder.Services.AddScoped<IIndexDefinitionRepository, IndexDefinitionRepository>();
+
+builder.Services.AddScoped<IIndexSyncService, IndexSynchronizerService>();
+builder.Services.AddScoped<IIndexSyncRepository, IndexSyncRepository>();
 
 var app = builder.Build();
 
