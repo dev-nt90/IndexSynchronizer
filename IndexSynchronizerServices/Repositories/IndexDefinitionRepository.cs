@@ -7,8 +7,8 @@ namespace IndexSynchronizerServices.Repositories
 {
 	public class IndexDefinitionRepository : IIndexDefinitionRepository
 	{
-		// TODO: this is not actually async
-		// make-it-so.gif
+		// TODO: this is not actually async; make-it-so.gif
+		// TODO: inject datastore context/provider/something instead of building a connection string on the fly
 		public async Task<IEnumerable<String>> GetIndexDefinitionsAsync(IConnectionDetails connectionDetails)
 		{
 			var connectionString = 
@@ -18,11 +18,12 @@ namespace IndexSynchronizerServices.Repositories
 				$"Password={connectionDetails.Password};" +
 				$"TrustServerCertificate=true"; // TODO: extra spicy - remove this and do the real work of certs
 
+			// TODO: embedded resource? something else? decisions, decisions
 			var query = File.ReadAllText("Scripts/GetIndexDefinitions.sql");
 
 			// TODO: make this strongly typed; e.g. List<IndexDefinition> where IndexDefinition has members including but not limited to:
 			// key columns, included columns, column order, asc/desc, etc.
-			// There's _probably_ already a library or type for this. Will _probably_ have to extend on a per-supported-database-and-version basis
+			// You'd think there would be a library for this already, but I can't seem to find one
 			var definitions = new List<String>();
 			
 			using (var connection = new SqlConnection(connectionString))

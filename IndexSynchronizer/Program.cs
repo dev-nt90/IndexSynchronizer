@@ -19,6 +19,7 @@
  *     *Cross-site request forgery (CSRF) protection
  *     *input sanitation
  *     *Content Security Policy (CSP)
+ * *Front/middle/back: toggle between sql and windows auth for DB access
  * *Middleware controllers
  * *Middleware logging
  * *Middleware exception handling
