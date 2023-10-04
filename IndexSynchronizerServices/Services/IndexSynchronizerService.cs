@@ -1,8 +1,11 @@
-﻿using IndexSynchronizer.Models;
-using IndexSynchronizer.Repositories;
+﻿using IndexSynchronizerServices.Models;
+using IndexSynchronizerServices.Repositories;
+
+using Microsoft.Extensions.Logging;
+
 using System.Collections.Concurrent;
 
-namespace IndexSynchronizer.Services
+namespace IndexSynchronizerServices.Services
 {
     public class IndexSynchronizerService : IIndexSyncService
     {
@@ -62,20 +65,19 @@ namespace IndexSynchronizer.Services
 			}
 			catch (Exception ex)
 			{
-				this.logger.LogError($"Something went wrong while trying to cancel the task with operation identifier: {operationIdentifier}");
+				this.logger.LogError($"Something went wrong while trying to cancel the task with operation identifier: {operationIdentifier}", ex);
 				throw;
 			}
 		}
 
 		private async Task SyncIndexesAsync(IConnectionDetails source, IConnectionDetails target, String operationIdentifier, CancellationToken cancellationToken)
 		{
-			
 			try
 			{
 				var sourceIndexDefinitions = await this.indexDefinitionRepository.GetIndexDefinitionsAsync(source);
 				Task transactionTask = null;
 
-				while (!this.runningOperations[operationIdentifier].IsCancellationRequested)
+				do
 				{
 					if (transactionTask == null)
 					{
@@ -84,6 +86,7 @@ namespace IndexSynchronizer.Services
 
 					await Task.Delay(TimeSpan.FromSeconds(3), cancellationToken);
 				}
+				while (!this.runningOperations[operationIdentifier].IsCancellationRequested && !transactionTask.IsCompleted);
 			}
 			catch (Exception ex)
 			{

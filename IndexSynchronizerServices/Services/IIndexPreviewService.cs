@@ -1,6 +1,6 @@
-﻿using IndexSynchronizer.Models;
+﻿using IndexSynchronizerServices.Models;
 
-namespace IndexSynchronizer.Services
+namespace IndexSynchronizerServices.Services
 {
 	public interface IIndexPreviewService
 	{

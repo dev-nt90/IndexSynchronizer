@@ -1,8 +1,7 @@
-﻿using IndexSynchronizer.Models;
-using IndexSynchronizer.Repositories;
-using Microsoft.Owin.Security.Provider;
+﻿using IndexSynchronizerServices.Models;
+using IndexSynchronizerServices.Repositories;
 
-namespace IndexSynchronizer.Services
+namespace IndexSynchronizerServices.Services
 {
 	public class IndexPreviewService : IIndexPreviewService
 	{

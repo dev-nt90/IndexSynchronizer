@@ -1,6 +1,6 @@
-﻿using IndexSynchronizer.Models;
+﻿using IndexSynchronizerServices.Models;
 
-namespace IndexSynchronizer.Repositories
+namespace IndexSynchronizerServices.Repositories
 {
 	public class IndexSyncRepository : IIndexSyncRepository
 	{

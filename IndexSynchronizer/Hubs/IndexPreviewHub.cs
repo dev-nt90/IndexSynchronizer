@@ -1,5 +1,5 @@
-﻿using IndexSynchronizer.Models;
-using IndexSynchronizer.Services;
+﻿using IndexSynchronizerServices.Models;
+using IndexSynchronizerServices.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
@@ -16,7 +16,7 @@ namespace IndexSynchronizer.Hubs
 			this.indexPreviewService = previewService;
 		}
 
-		public async Task PreviewRequestSource(ConnectionDetails connectionDetails)
+		public async Task PreviewRequestSource(IConnectionDetails connectionDetails)
 		{
 			try
 			{
@@ -30,7 +30,7 @@ namespace IndexSynchronizer.Hubs
 			}
 		}
 
-		public async Task PreviewRequestTarget(ConnectionDetails connectionDetails)
+		public async Task PreviewRequestTarget(IConnectionDetails connectionDetails)
 		{
 			try
 			{

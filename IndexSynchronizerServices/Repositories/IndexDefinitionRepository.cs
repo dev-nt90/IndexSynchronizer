@@ -1,9 +1,9 @@
-﻿using IndexSynchronizer.Models;
+﻿using IndexSynchronizerServices.Models;
 using Microsoft.Data.SqlClient;
 
 using System.Text;
 
-namespace IndexSynchronizer.Repositories
+namespace IndexSynchronizerServices.Repositories
 {
 	public class IndexDefinitionRepository : IIndexDefinitionRepository
 	{

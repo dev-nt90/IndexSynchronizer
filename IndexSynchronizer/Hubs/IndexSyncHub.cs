@@ -1,5 +1,5 @@
-﻿using IndexSynchronizer.Models;
-using IndexSynchronizer.Services;
+﻿using IndexSynchronizerServices.Models;
+using IndexSynchronizerServices.Services;
 using Microsoft.AspNetCore.SignalR;
 
 namespace IndexSynchronizer.Hubs

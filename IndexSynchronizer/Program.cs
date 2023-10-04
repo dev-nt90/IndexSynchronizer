@@ -3,6 +3,7 @@
  * TODO:
  * 
  * TESTS
+ * 
  * *Write SQL query/procedure to output index definition of input table
  *     *Deploy sproc or keep logic internal to tool?
  *     *Support multiple database platforms? SQL Server, MySQL, Postgres? Introduces N complexity for back, maybe for middle.
@@ -34,8 +35,7 @@
  * *"Strict" option to only allow exact table name matches? e.g. don't want to over TableB with TbleA
  */
 using IndexSynchronizer.Hubs;
-using IndexSynchronizer.Repositories;
-using IndexSynchronizer.Services;
+using IndexSynchronizerServices.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,12 +43,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR(options => { options.EnableDetailedErrors = true; });
-
-builder.Services.AddScoped<IIndexPreviewService, IndexPreviewService>();
-builder.Services.AddScoped<IIndexDefinitionRepository, IndexDefinitionRepository>();
-
-builder.Services.AddScoped<IIndexSyncService, IndexSynchronizerService>();
-builder.Services.AddScoped<IIndexSyncRepository, IndexSyncRepository>();
+builder.Services.AddIndexSyncServices();
+builder.Services.AddIndexSyncRepositories();
 
 var app = builder.Build();
 
