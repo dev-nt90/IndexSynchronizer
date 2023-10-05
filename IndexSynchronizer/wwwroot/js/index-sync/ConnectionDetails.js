@@ -5,6 +5,5 @@
         this.ServerName = server.toString();
         this.DatabaseName = database.toString();
         this.TableName = tablename.toString();
-        this.IsSourceDatabase = isSource;
     }
 }

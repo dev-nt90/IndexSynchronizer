@@ -16,7 +16,7 @@ namespace IndexSynchronizer.Hubs
 			this.indexPreviewService = previewService;
 		}
 
-		public async Task PreviewRequestSource(IConnectionDetails connectionDetails)
+		public async Task PreviewRequestSource(ConnectionDetails connectionDetails)
 		{
 			try
 			{
@@ -30,7 +30,7 @@ namespace IndexSynchronizer.Hubs
 			}
 		}
 
-		public async Task PreviewRequestTarget(IConnectionDetails connectionDetails)
+		public async Task PreviewRequestTarget(ConnectionDetails connectionDetails)
 		{
 			try
 			{

@@ -8,6 +8,5 @@
 		public String ServerName { get; set; }
 		public String DatabaseName { get; set; }
 		public String TableName { get; set; }
-		public Boolean IsSourceDatabase { get; set; }
 	}
 }

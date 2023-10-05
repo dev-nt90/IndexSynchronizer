@@ -9,7 +9,7 @@ namespace IndexSynchronizer.Hubs
         private readonly ILogger logger;
         private readonly IIndexSyncService indexSyncService;
 
-		public IndexSyncHub(ILogger logger, IIndexSyncService indexSyncService)
+		public IndexSyncHub(ILogger<IndexSyncHub> logger, IIndexSyncService indexSyncService)
 		{
 			this.logger = logger;
 			this.indexSyncService = indexSyncService;

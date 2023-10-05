@@ -93,7 +93,7 @@ namespace IndexSynchronizerDevInit
 			}
 		}
 
-		private static void WriteTestRunnerCredentialsToEnvironment(String testRunnerPassword, String testRunnerLogin = "IndexSyncTestLogin")
+		private static void WriteTestRunnerCredentialsToRegistry(String testRunnerPassword, String testRunnerLogin = "IndexSyncTestLogin")
 		{
 			// TODO: this
 		}

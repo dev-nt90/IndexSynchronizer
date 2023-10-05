@@ -44,8 +44,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR(options => { options.EnableDetailedErrors = true; });
-builder.Services.AddIndexSyncServices();
 builder.Services.AddIndexSyncRepositories();
+builder.Services.AddIndexSyncServices();
+
 
 var app = builder.Build();
 

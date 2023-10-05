@@ -12,7 +12,7 @@ namespace IndexSynchronizerServices.Services
 			this.indexPreviewRepository = indexPreviewRepository;
 		}
 
-		public async Task<IEnumerable<String>> GetIndexDefinitionsAsync(IConnectionDetails connectionDetails)
+		public async Task<IEnumerable<String>> GetIndexDefinitionsAsync(ConnectionDetails connectionDetails)
 		{
 			if (connectionDetails == null)
 			{

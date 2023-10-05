@@ -45,13 +45,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.SqlServer.Server": {
+            "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[1.0.0, )"
-            },
-            "Microsoft.SqlServer.SqlManagementObjects": {
-              "target": "Package",
-              "version": "[170.18.0, )"
+              "version": "[5.2.0-preview3.23201.1, )"
             }
           },
           "imports": [

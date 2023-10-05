@@ -15,7 +15,7 @@ namespace IndexSynchronizerServices.Services
 		private ConcurrentDictionary<String, CancellationTokenSource> runningOperations = new ConcurrentDictionary<String, CancellationTokenSource>();
 
 		public IndexSynchronizerService(
-			ILogger logger, 
+			ILogger<IndexSynchronizerService> logger, 
 			IIndexDefinitionRepository indexDefinitionRepository,
 			IIndexSyncRepository indexSyncRepository)
 		{
