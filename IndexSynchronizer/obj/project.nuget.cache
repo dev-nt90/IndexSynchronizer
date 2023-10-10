@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qglmUHifYqRUaT2HPVrzePlY0TnIuUtM32/9B0GFZ1wTq8utNElEqo5Uq1qcpeuRFqVYgnUIYY0i3jNrCCBQew==",
+  "dgSpecHash": "iP6ub/W+m7GrN95GAw7epF/C4h/KUoitE31FVYeBjqc9WXuCZsdjoPcqjsoT+0Pbe3CsAYAZaDctGL+07BG+yA==",
   "success": true,
   "projectFilePath": "G:\\dev\\src\\IndexSynchronizer\\IndexSynchronizer\\IndexSynchronizerApp.csproj",
   "expectedPackageFiles": [
@@ -83,6 +83,8 @@
     "C:\\Users\\natha\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.1.0\\microsoft.data.sqlclient.sni.runtime.5.1.0.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\microsoft.diasymreader\\1.3.0\\microsoft.diasymreader.1.3.0.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\microsoft.dotnet.scaffolding.shared\\6.0.16\\microsoft.dotnet.scaffolding.shared.6.0.16.nupkg.sha512",
+    "C:\\Users\\natha\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0-rc.1.23419.4\\microsoft.extensions.configuration.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\natha\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0-rc.1.23419.4\\microsoft.extensions.configuration.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0-rc.1.23419.4\\microsoft.extensions.dependencyinjection.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0-rc.1.23419.4\\microsoft.extensions.dependencyinjection.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\natha\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0-rc.1.23419.4\\microsoft.extensions.logging.8.0.0-rc.1.23419.4.nupkg.sha512",
@@ -226,10 +228,10 @@
     "C:\\Users\\natha\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\natha\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.22\\microsoft.windowsdesktop.app.ref.6.0.22.nupkg.sha512",
-    "C:\\Users\\natha\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.22\\microsoft.netcore.app.ref.6.0.22.nupkg.sha512",
-    "C:\\Users\\natha\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.22\\microsoft.aspnetcore.app.ref.6.0.22.nupkg.sha512",
-    "C:\\Users\\natha\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.22\\microsoft.netcore.app.host.win-x64.6.0.22.nupkg.sha512"
+    "C:\\Users\\natha\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.23\\microsoft.windowsdesktop.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\natha\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.23\\microsoft.netcore.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\natha\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.23\\microsoft.aspnetcore.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\natha\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.23\\microsoft.netcore.app.host.win-x64.6.0.23.nupkg.sha512"
   ],
   "logs": [
     {

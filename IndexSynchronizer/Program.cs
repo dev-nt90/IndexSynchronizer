@@ -36,7 +36,7 @@
  * *"Strict" option to only allow exact table name matches? e.g. don't want to over TableB with TbleA
  */
 using IndexSynchronizer.Hubs;
-using IndexSynchronizerServices.Extensions;
+using IndexSynchronizerServices.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 

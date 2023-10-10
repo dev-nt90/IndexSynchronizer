@@ -3,7 +3,7 @@ using IndexSynchronizerServices.Services;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace IndexSynchronizerServices.Extensions
+namespace IndexSynchronizerServices.DependencyInjection
 {
 	public static class IndexSyncIServiceCollectionExtensions
 	{
