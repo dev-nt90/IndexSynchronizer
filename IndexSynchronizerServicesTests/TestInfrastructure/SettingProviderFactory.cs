@@ -41,6 +41,7 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 
 		public String BuildMasterDbConnectionString()
 		{
+			var envIp = Environment.GetEnvironmentVariable("CONTAINER_IP");
 			var database = "master"; // TODO: from config
 			var server = "localhost"; // TODO: from config
 			var user = "sa"; // TODO: from env
@@ -48,7 +49,7 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 
 			var sqlStringBuilder = new SqlConnectionStringBuilder
 			{
-				DataSource = server,
+				DataSource = envIp,
 				InitialCatalog = database,
 				UserID = user,
 				Password = pwd,
