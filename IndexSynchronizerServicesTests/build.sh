@@ -9,4 +9,4 @@ fi
 echo "Building OLTP docker image."
 docker build . -t local/sql_server_test_container:latest --build-arg BAK_FILE="./adventureworks.bak"
 docker tag local/sql_server_test_container:latest local/sql_server_test_container
-docker run --name sql_server_test_container -p 1433:1433 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=ChangeThisHardc0dedThing!' -d local/sql_server_test_container
+docker run --name sql_server_test_container -p 1433:1433 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=ChangeThisHardc0dedThing!' -d chriseaton/adventureworks:latest
