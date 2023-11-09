@@ -16,6 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Grant exec permission
+      run: chmod +x ./IndexSynchronizerServicesTests/build.sh
+    - name: Setup sql server test instance
+      run: |
+          ./IndexSynchronizerServicesTests/build.sh
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:

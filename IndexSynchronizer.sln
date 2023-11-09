@@ -5,11 +5,9 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndexSynchronizerApp", "IndexSynchronizer\IndexSynchronizerApp.csproj", "{35A70EB9-4510-4318-B90E-4BBBCBAA834B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexSynchronizerServices", "IndexSynchronizerServices\IndexSynchronizerServices.csproj", "{D2898DEB-7C36-45BD-A00F-47E91788E27A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndexSynchronizerServices", "IndexSynchronizerServices\IndexSynchronizerServices.csproj", "{D2898DEB-7C36-45BD-A00F-47E91788E27A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexSynchronizerServicesTests", "IndexSynchronizerServicesTests\IndexSynchronizerServicesTests.csproj", "{8622A683-CB36-4A38-8F08-16A0C988C0C5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexSynchronizerDevInit", "IndexSynchronizerDevInit\IndexSynchronizerDevInit.csproj", "{26E1C12D-2A8D-4E0B-B4C8-D9FA4982FA2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndexSynchronizerServicesTests", "IndexSynchronizerServicesTests\IndexSynchronizerServicesTests.csproj", "{8622A683-CB36-4A38-8F08-16A0C988C0C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{8622A683-CB36-4A38-8F08-16A0C988C0C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8622A683-CB36-4A38-8F08-16A0C988C0C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8622A683-CB36-4A38-8F08-16A0C988C0C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26E1C12D-2A8D-4E0B-B4C8-D9FA4982FA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26E1C12D-2A8D-4E0B-B4C8-D9FA4982FA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26E1C12D-2A8D-4E0B-B4C8-D9FA4982FA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26E1C12D-2A8D-4E0B-B4C8-D9FA4982FA2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

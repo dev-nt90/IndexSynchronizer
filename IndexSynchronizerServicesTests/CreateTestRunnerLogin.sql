@@ -25,7 +25,6 @@ BEGIN
 	DROP LOGIN [IndexSyncTestLogin];
 END;
 
-
 --note: sections wrapped in '#' characters indicate a replacement token to be injected at runtime
 --note: we can get away with this because we control the characters directly - i.e. we're not vulnerable to injection
 IF NOT EXISTS

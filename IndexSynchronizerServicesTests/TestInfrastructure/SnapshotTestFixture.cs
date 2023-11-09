@@ -21,17 +21,18 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
         public void OneTimeSetup()
         {
 			settingProviderFactory = new SettingProviderFactory();
-            var config = settingProviderFactory.CreateConfig();
+            //var config = settingProviderFactory.CreateConfig();
 
 
             sourceDatabaseSnapshot = new DatabaseSnapshot(
-                config.SourceConnectionSettings.DatabaseName, 
-                config.SourceConnectionSettings.MasterDatabaseConnectionString);
+                "AdventureWorks", // TODO: from config
+                settingProviderFactory.BuildMasterDbConnectionString());
             sourceDatabaseSnapshot.Take();
 
-            targetDatabaseSnapshot = new DatabaseSnapshot(
-				config.TargetConnectionSettings.DatabaseName,
-				config.TargetConnectionSettings.MasterDatabaseConnectionString);
+            // TODO:
+    //        targetDatabaseSnapshot = new DatabaseSnapshot(
+				//config.TargetConnectionSettings.DatabaseName,
+				//config.TargetConnectionSettings.MasterDatabaseConnectionString);
 			// targetDatabaseSnapshot.Take();
         }
 

@@ -1,3 +1,0 @@
-﻿using IndexSynchronizerDevInit;
-
-Runner.Run();

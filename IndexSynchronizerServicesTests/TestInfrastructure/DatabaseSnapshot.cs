@@ -117,8 +117,7 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 				{
 					String commandText = 		
 						$@"
-						USE master
-						ALTER DATABASE {this.snapshotName} SET OFFLINE WITH ROLLBACK IMMEDIATE 
+						USE master;
 
 						DECLARE @SnapshotName NVARCHAR(MAX);
                         DECLARE @cmd NVARCHAR(MAX);

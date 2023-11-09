@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using IndexSynchronizerServicesTests.TestInfrastructure.Config;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-
 
 namespace IndexSynchronizerServicesTests.TestInfrastructure
 {
@@ -16,25 +8,57 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
     /// </summary>
     public sealed class SettingProviderFactory
     {
-        private IConfigurationRoot? configRoot;
-        
-        public SettingProviderFactory()
-        {
-            this.configRoot = this.GetConfiguration();
+		private readonly IConfiguration _configuration;
+
+		public SettingProviderFactory()
+		{
+			_configuration = new ConfigurationBuilder().AddEnvironmentVariables().Build();
 		}
 
-        // TODO: break this out as it increases in complexity
-        public ConfigPoco CreateConfig()
-        {
-            var newConfig = new ConfigPoco();
-            var sqlServerSection = this.configRoot!.GetSection("TestConnections:SqlServer");
-            sqlServerSection.Bind(newConfig);
-            return newConfig;
-		}
-		
-        private IConfigurationRoot? GetConfiguration()
+		public IConfiguration Configuration { get { return _configuration; } }
+
+		public String BuildDatabaseUnderTestConnectionString()
 		{
-			return new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+			var database = "AdventureWorks"; // TODO: from config
+			var server = "localhost"; // TODO: from config
+			var user = "IndexSyncTestUser"; // TODO: from env
+			var pwd = "ChangeThisHardc0dedThing!"; // TODO: from env
+
+			var sqlStringBuilder = new SqlConnectionStringBuilder
+			{
+				DataSource = server,
+				InitialCatalog = database,
+				UserID = user,
+				Password = pwd,
+
+				// TODO: as a toy project not ever leaving localhost this is fine, but if this
+				// ever makes it to production for some misguided reason, remove this and do the real work of certs
+				TrustServerCertificate = true
+			};
+
+			return sqlStringBuilder.ToString();
+		}
+
+		public String BuildMasterDbConnectionString()
+		{
+			var database = "master"; // TODO: from config
+			var server = "localhost"; // TODO: from config
+			var user = "sa"; // TODO: from env
+			var pwd = "ChangeThisHardc0dedThing!"; // TODO: from env
+
+			var sqlStringBuilder = new SqlConnectionStringBuilder
+			{
+				DataSource = server,
+				InitialCatalog = database,
+				UserID = user,
+				Password = pwd,
+
+				// TODO: as a toy project not ever leaving localhost this is fine, but if this
+				// ever makes it to production for some misguided reason, remove this and do the real work of certs
+				TrustServerCertificate = true
+			};
+
+			return sqlStringBuilder.ToString();
 		}
 	}
 }
