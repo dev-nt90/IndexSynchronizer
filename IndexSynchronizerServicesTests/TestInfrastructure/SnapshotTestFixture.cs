@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,43 +23,57 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
         public void OneTimeSetup()
         {
 			settingProviderFactory = new SettingProviderFactory();
-            //var config = settingProviderFactory.CreateConfig();
-
 
             sourceDatabaseSnapshot = new DatabaseSnapshot(
                 "AdventureWorks", // TODO: from config
                 settingProviderFactory.BuildMasterDbConnectionString(),
                 settingProviderFactory.BuildDatabaseUnderTestConnectionString());
-            sourceDatabaseSnapshot.Take();
 
-            // TODO:
-    //        targetDatabaseSnapshot = new DatabaseSnapshot(
-				//config.TargetConnectionSettings.DatabaseName,
-				//config.TargetConnectionSettings.MasterDatabaseConnectionString);
+			using (var cnn = new SqlConnection(settingProviderFactory.BuildMasterDbConnectionString()))
+			{
+				using (IDbCommand cmd = cnn.CreateCommand())
+				{
+					cmd.Connection = cnn;
+					cmd.CommandTimeout = 1000;
+					cmd.CommandText = String.Format("select 1");
+					cnn.Open();
+
+					if ((Int32)cmd.ExecuteScalar() == 1)
+					{
+						throw new Exception("wat");
+					}
+				}
+			}
+			//sourceDatabaseSnapshot.Take();
+
+			// TODO:
+			//        targetDatabaseSnapshot = new DatabaseSnapshot(
+			//config.TargetConnectionSettings.DatabaseName,
+			//config.TargetConnectionSettings.MasterDatabaseConnectionString);
 			// targetDatabaseSnapshot.Take();
-        }
-
-		[SetUp]
-        public virtual void SetUp()
-        {
-            // TODO: anything to do here? DI? config?
 		}
 
-        [TearDown]
-        public virtual void TearDown()
-        {
-			sourceDatabaseSnapshot.RestoreFromSnapshot();
-			//targetDatabaseSnapshot.RestoreFromSnapshot();
-        }
+		//[SetUp]
+  //      public virtual void SetUp()
+  //      {
+  //          // TODO: anything to do here? DI? config?
+		//}
 
-        [OneTimeTearDown]
-        public void OneTimeTeardown()
-        {
-			sourceDatabaseSnapshot.RestoreFromSnapshot();
-			sourceDatabaseSnapshot.DropDatabaseSnapshot();
+  //      [TearDown]
+  //      public virtual void TearDown()
+  //      {
+		//	sourceDatabaseSnapshot.RestoreFromSnapshot();
+		//	//targetDatabaseSnapshot.RestoreFromSnapshot();
+  //      }
 
-			//targetDatabaseSnapshot.RestoreFromSnapshot();
-			//targetDatabaseSnapshot.DropDatabaseSnapshot();
-		}
+  //      [OneTimeTearDown]
+  //      public void OneTimeTeardown()
+  //      {
+		//	sourceDatabaseSnapshot.RestoreFromSnapshot();
+		//	sourceDatabaseSnapshot.DropDatabaseSnapshot();
+
+		//	//targetDatabaseSnapshot.RestoreFromSnapshot();
+		//	//targetDatabaseSnapshot.DropDatabaseSnapshot();
+		//}
     }
 }
