@@ -10,12 +10,14 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 		private readonly String databaseName;
 		private readonly String snapshotName;
 		private readonly String masterDatabaseConnectionString;
+		private readonly String databaseUnderTestConnectionString;
 
-		public DatabaseSnapshot(String databaseName, String masterDatabaseConnectionString)
+		public DatabaseSnapshot(String databaseName, String masterDatabaseConnectionString, String databaseUnderTestConnectionString)
 		{
 			this.databaseName = databaseName;
 			this.snapshotName = String.Concat(databaseName, "_SS");
 			this.masterDatabaseConnectionString = masterDatabaseConnectionString;
+			this.databaseUnderTestConnectionString = databaseUnderTestConnectionString;
 		}
 
 		public void Take(Boolean overwriteExisting = true)
@@ -31,14 +33,15 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 					return;
 				}
 			}
+			
+			using var databaseUnderTestConnection = new SqlConnection(this.databaseUnderTestConnectionString);
+			using var getDatabaseDefinitionCommand = new SqlCommand();
+			
+			getDatabaseDefinitionCommand.Connection = databaseUnderTestConnection;
+			getDatabaseDefinitionCommand.CommandType = CommandType.Text;
 
-			using var sqlConnection = new SqlConnection(this.masterDatabaseConnectionString);
-			using var command = new SqlCommand();
-			command.Connection = sqlConnection;
-			command.CommandType = CommandType.Text;
-
-			// First get the files for this db.
-			command.CommandText = $@"
+			// first get the files for this db.
+			getDatabaseDefinitionCommand.CommandText = $@"
                 SELECT
                     Name = name,
                     FileName = physical_name
@@ -46,20 +49,11 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
                 WHERE type = 0
                     ORDER BY file_id;";
 
-			sqlConnection.Open();
-
-			var sqlBuilder = new StringBuilder();
-
-			sqlBuilder.AppendLine(
-				$@"USE master;
-
-                CREATE DATABASE {this.snapshotName}
-                    ON
-                ");
+			databaseUnderTestConnection.Open();
 
 			var files = new List<String>();
 
-			using (var reader = command.ExecuteReader())
+			using (var reader = getDatabaseDefinitionCommand.ExecuteReader())
 			{
 				while (reader.Read())
 				{
@@ -70,21 +64,36 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 				}
 			}
 
+			/* Now create the snapshot, 
+			 * e.g
+			    USE master
+				CREATE DATABASE AdventureWorks_SS
+				ON
+				( NAME = AdventureWorks, FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLSERVER2019\MSSQL\DATA\AdventureWorks_Primary.SS' )
+				AS SNAPSHOT OF AdventureWorks;
+			*/
+			var sqlBuilder = new StringBuilder();
+
+			sqlBuilder.AppendLine(
+				$@"USE master;
+
+                CREATE DATABASE {this.snapshotName}
+                    ON
+                ");
+
 			sqlBuilder.AppendLine(String.Join(",", files));
 
 			sqlBuilder.AppendLine($"AS SNAPSHOT OF {this.databaseName};");
 
-			/* Now create the snapshot, 
-			 * e.g
-				CREATE DATABASE AdventureWorks_SS
-				ON
-				( NAME = AdventureWorks_Primary, FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLSERVER2019\MSSQL\DATA\AdventureWorks_Primary.SS' ),
-				( NAME = AdventureWorks_Data, FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLSERVER2019\MSSQL\DATA\AdventureWorks_Data.SS' ),
-				( NAME = AdventureWorks_Index, FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLSERVER2019\MSSQL\DATA\AdventureWorks_Index.SS' )
-				AS SNAPSHOT OF AdventureWorks;
-			*/
-			command.CommandText = sqlBuilder.ToString();
-			command.ExecuteScalar();
+			using var masterConnection = new SqlConnection(this.masterDatabaseConnectionString);
+			using var createDatabaseSnapshotCommand = new SqlCommand();
+			createDatabaseSnapshotCommand.Connection = masterConnection;
+			createDatabaseSnapshotCommand.CommandType = CommandType.Text;
+
+			masterConnection.Open();
+
+			createDatabaseSnapshotCommand.CommandText = sqlBuilder.ToString();
+			createDatabaseSnapshotCommand.ExecuteScalar();
 		}
 
 		private Boolean DoesDatabaseSnapshotExist()

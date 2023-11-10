@@ -20,8 +20,9 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 		public String BuildDatabaseUnderTestConnectionString()
 		{
 			var database = "AdventureWorks"; // TODO: from config
-			var server = "localhost"; // TODO: from config
-			var user = "IndexSyncTestUser"; // TODO: from env
+			var envIp = Environment.GetEnvironmentVariable("CONTAINER_IP");
+			var server = "localhost";
+			var user = "IndexSyncTestLogin"; // TODO: from env
 			var pwd = "ChangeThisHardc0dedThing!"; // TODO: from env
 
 			var sqlStringBuilder = new SqlConnectionStringBuilder
@@ -42,14 +43,14 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 		public String BuildMasterDbConnectionString()
 		{
 			var envIp = Environment.GetEnvironmentVariable("CONTAINER_IP");
+			var server = "localhost";
 			var database = "master"; // TODO: from config
-			var server = "localhost"; // TODO: from config
 			var user = "sa"; // TODO: from env
 			var pwd = "ChangeThisHardc0dedThing!"; // TODO: from env
 
 			var sqlStringBuilder = new SqlConnectionStringBuilder
 			{
-				DataSource = envIp,
+				DataSource = server,
 				InitialCatalog = database,
 				UserID = user,
 				Password = pwd,

@@ -6,8 +6,8 @@ ENV SA_PASSWORD=${SA_PASSWORD}
 EXPOSE 1433
 WORKDIR /
 COPY $BAK_FILE ./adventureworks.bak
-COPY ./install.sql .
-COPY ./CreateTestRunnerLogin.sql .
-COPY ./install.sh .
-COPY ./startup.sh .
+COPY ./IndexSynchronizerServicesTests/install.sql .
+COPY ./IndexSynchronizerServicesTests/CreateTestRunnerLogin.sql .
+COPY ./IndexSynchronizerServicesTests/install.sh .
+COPY ./IndexSynchronizerServicesTests/startup.sh .
 CMD /bin/bash ./startup.sh

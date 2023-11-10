@@ -26,7 +26,8 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 
             sourceDatabaseSnapshot = new DatabaseSnapshot(
                 "AdventureWorks", // TODO: from config
-                settingProviderFactory.BuildMasterDbConnectionString());
+                settingProviderFactory.BuildMasterDbConnectionString(),
+                settingProviderFactory.BuildDatabaseUnderTestConnectionString());
             sourceDatabaseSnapshot.Take();
 
             // TODO:
