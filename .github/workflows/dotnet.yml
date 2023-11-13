@@ -14,17 +14,16 @@ jobs:
   build-and-run-tests:
 
     runs-on: ubuntu-latest
-    services:
-      sqlserver:
-        image: mcr.microsoft.com/mssql/server:2019-latest
-        ports:
-          - 1433:1433
-        env:
-          ACCEPT_EULA: Y
-          SA_PASSWORD: ChangeThisHardc0dedThing!
-
     steps:
     - uses: actions/checkout@v3
+    - name: Grant exec permission
+      run: |
+        chmod +x ./IndexSynchronizerServicesTests/build.sh
+        chmod +x ./IndexSynchronizerServicesTests/startup.sh
+        chmod +x ./IndexSynchronizerServicesTests/install.sh
+    - name: Setup sql server test instance
+      run: |
+          ./IndexSynchronizerServicesTests/build.sh
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -37,3 +36,4 @@ jobs:
       run: dotnet test --no-build --verbosity normal
       env:
         MasterTestConnectionString: "Server=localhost,1433;Initial Catalog=master;User Id=sa;Password=ChangeThisHardc0dedThing!"
+        SA_PASSWORD: ChangeThisHardc0dedThing!
