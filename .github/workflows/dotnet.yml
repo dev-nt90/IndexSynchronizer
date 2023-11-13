@@ -14,20 +14,16 @@ jobs:
   build-and-run-tests:
 
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v3
-    - name: Grant exec permission
-      run: |
-        chmod +x ./IndexSynchronizerServicesTests/build.sh
-        chmod +x ./IndexSynchronizerServicesTests/startup.sh
-        chmod +x ./IndexSynchronizerServicesTests/install.sh
-    - name: Setup sql server test instance
-      run: |
-          ./IndexSynchronizerServicesTests/build.sh
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - name: Grant exec permissions and exec build script
+      run: |
+          docker run -p 1433:1433 -e 'ACCEPT_EULA=Y' -e "SA_PASSWORD=ChangeThisHardc0dedThing!" -d devnt90/sql_server_test_container:latest
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -36,4 +32,3 @@ jobs:
       run: dotnet test --no-build --verbosity normal
       env:
         MasterTestConnectionString: "Server=localhost,1433;Initial Catalog=master;User Id=sa;Password=ChangeThisHardc0dedThing!"
-        SA_PASSWORD: ChangeThisHardc0dedThing!
