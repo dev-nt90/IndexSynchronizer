@@ -38,10 +38,7 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 					cmd.CommandText = String.Format("select 1");
 					cnn.Open();
 
-					if ((Int32)cmd.ExecuteScalar() == 1)
-					{
-						throw new Exception("wat");
-					}
+					cmd.ExecuteScalar();
 				}
 			}
 			//sourceDatabaseSnapshot.Take();

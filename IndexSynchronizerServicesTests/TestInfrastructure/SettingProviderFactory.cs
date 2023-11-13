@@ -20,14 +20,14 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
 
 		public String BuildDatabaseUnderTestConnectionString()
 		{
-			var envConStr = Environment.GetEnvironmentVariable("MasterTestConnectionString");
-			
+			var envConStr = Environment.GetEnvironmentVariable("MasterTestConnectionString") + ";TrustServerCertificate=true;Encrypt=False";
+
 			return envConStr.Replace("master", "AdventureWorks"); // TODO: get db name from config
 		}
 
 		public String BuildMasterDbConnectionString()
 		{
-			return Environment.GetEnvironmentVariable("MasterTestConnectionString");
+			return Environment.GetEnvironmentVariable("MasterTestConnectionString") + ";TrustServerCertificate=true;Encrypt=False";
 		}
 	}
 }
