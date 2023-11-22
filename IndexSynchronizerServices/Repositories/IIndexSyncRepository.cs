@@ -4,6 +4,6 @@ namespace IndexSynchronizerServices.Repositories
 {
 	public interface IIndexSyncRepository
 	{
-		Task DoIndexSync(IEnumerable<String> sourceIndexDefinitions, IConnectionDetails target);
+		Task DoIndexSync(IDictionary<String, String> sourceIndexDefinitions, IConnectionDetails target);
 	}
 }

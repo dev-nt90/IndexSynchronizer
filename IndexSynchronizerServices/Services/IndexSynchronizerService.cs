@@ -87,6 +87,11 @@ namespace IndexSynchronizerServices.Services
 					await Task.Delay(TimeSpan.FromSeconds(3), cancellationToken);
 				}
 				while (!this.runningOperations[operationIdentifier].IsCancellationRequested && !transactionTask.IsCompleted);
+
+				if (transactionTask.Exception != null)
+				{
+					throw transactionTask.Exception;
+				}
 			}
 			catch (Exception ex)
 			{

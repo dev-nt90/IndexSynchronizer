@@ -8,9 +8,9 @@ namespace IndexSynchronizer.Hubs
 	public class IndexPreviewHub : Hub
 	{
 		private readonly ILogger logger;
-		private readonly IIndexPreviewService indexPreviewService;
+		private readonly IIndexDefinitionService indexPreviewService;
 
-		public IndexPreviewHub(ILogger<IndexPreviewHub> logger, IIndexPreviewService previewService)
+		public IndexPreviewHub(ILogger<IndexPreviewHub> logger, IIndexDefinitionService previewService)
 		{
 			this.logger = logger;
 			this.indexPreviewService = previewService;

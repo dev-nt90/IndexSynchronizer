@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IndexSynchronizerCli": {
+      "commandName": "Project",
+      "commandLineArgs": "sync"
+    }
+  }
+}

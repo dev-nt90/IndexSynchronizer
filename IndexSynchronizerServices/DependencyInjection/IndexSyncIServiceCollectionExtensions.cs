@@ -10,7 +10,7 @@ namespace IndexSynchronizerServices.DependencyInjection
 		public static IServiceCollection AddIndexSyncServices(this IServiceCollection services)
 		{
 			services.AddScoped<IIndexSyncService, IndexSynchronizerService>();
-			services.AddScoped<IIndexPreviewService, IndexPreviewService>();
+			services.AddScoped<IIndexDefinitionService, IndexDefinitionService>();
 
 			return services;
 		}
