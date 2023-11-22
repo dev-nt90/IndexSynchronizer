@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IndexSynchronizerServices.Models.SqlServer
 {
-	internal class Index
-	{
-	}
+    internal class Index
+    {
+    }
 }

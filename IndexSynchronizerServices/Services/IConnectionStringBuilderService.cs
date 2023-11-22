@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace IndexSynchronizerServices.Services
 {
-	public interface IConnectionStringBuilderService
-	{
-		public string BuildConnectionString(IConnectionDetails connectionDetails);
-	}
+    public interface IConnectionStringBuilderService
+    {
+        public string BuildConnectionString(IConnectionDetails connectionDetails);
+    }
 }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace IndexSynchronizerServicesTests
 {
-	[TestFixture]
-	public sealed class IndexSyncServiceTests : SnapshotTestFixture
-	{
-		[Test]
-		public void CanTakeDatabaseSnapshot()
-		{
-			Assert.Pass();
-		}
-	}
+    [TestFixture]
+    public sealed class IndexSyncServiceTests : SnapshotTestFixture
+    {
+        [Test]
+        public void CanTakeDatabaseSnapshot()
+        {
+            Assert.Pass();
+        }
+    }
 }

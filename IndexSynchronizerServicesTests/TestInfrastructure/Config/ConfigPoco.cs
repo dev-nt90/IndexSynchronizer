@@ -9,6 +9,6 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure.Config
     public class ConfigPoco
     {
         public SqlServerConnectionSettings SourceConnectionSettings { get; set; }
-		public SqlServerConnectionSettings TargetConnectionSettings { get; set; }
-	}
+        public SqlServerConnectionSettings TargetConnectionSettings { get; set; }
+    }
 }

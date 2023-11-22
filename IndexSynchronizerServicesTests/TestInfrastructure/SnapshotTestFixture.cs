@@ -11,21 +11,21 @@
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-			settingProviderFactory = new SettingProviderFactory();
+            settingProviderFactory = new SettingProviderFactory();
 
             sourceDatabaseSnapshot = new DatabaseSnapshot(
                 "AdventureWorks", // TODO: from config
                 settingProviderFactory.BuildMasterDbConnectionString(),
                 settingProviderFactory.BuildDatabaseUnderTestConnectionString());
 
-			sourceDatabaseSnapshot.Take();
+            sourceDatabaseSnapshot.Take();
 
-			// TODO:
-			//        targetDatabaseSnapshot = new DatabaseSnapshot(
-			//config.TargetConnectionSettings.DatabaseName,
-			//config.TargetConnectionSettings.MasterDatabaseConnectionString);
-			// targetDatabaseSnapshot.Take();
-		}
+            // TODO:
+            //        targetDatabaseSnapshot = new DatabaseSnapshot(
+            //config.TargetConnectionSettings.DatabaseName,
+            //config.TargetConnectionSettings.MasterDatabaseConnectionString);
+            // targetDatabaseSnapshot.Take();
+        }
 
         [SetUp]
         public virtual void SetUp()

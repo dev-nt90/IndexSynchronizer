@@ -2,8 +2,8 @@
 
 namespace IndexSynchronizerServices.Repositories
 {
-	public interface IIndexDefinitionRepository
-	{
-		public Task<IDictionary<String, String>> GetIndexDefinitionsAsync(IConnectionDetails connectionDetails);
-	}
+    public interface IIndexDefinitionRepository
+    {
+        public Task<IDictionary<String, String>> GetIndexDefinitionsAsync(IConnectionDetails connectionDetails);
+    }
 }

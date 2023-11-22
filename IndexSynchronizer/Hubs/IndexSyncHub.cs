@@ -9,26 +9,26 @@ namespace IndexSynchronizer.Hubs
         private readonly ILogger logger;
         private readonly IIndexSyncService indexSyncService;
 
-		public IndexSyncHub(ILogger<IndexSyncHub> logger, IIndexSyncService indexSyncService)
-		{
-			this.logger = logger;
-			this.indexSyncService = indexSyncService;
-		}
+        public IndexSyncHub(ILogger<IndexSyncHub> logger, IIndexSyncService indexSyncService)
+        {
+            this.logger = logger;
+            this.indexSyncService = indexSyncService;
+        }
 
-		public async Task SyncIndexesAsync(IConnectionDetails source, IConnectionDetails target, String operationIdentifier)
+        public async Task SyncIndexesAsync(IConnectionDetails source, IConnectionDetails target, String operationIdentifier)
         {
             try
             {
                 await this.indexSyncService.StartAsync(source, target, operationIdentifier);
 
-				// TODO: maybe add some metadata (e.g. completion time) to the response? maybe auto-fire an update to a Stats database?
-				await Clients.Caller.SendAsync("SyncResponse");
-			}
+                // TODO: maybe add some metadata (e.g. completion time) to the response? maybe auto-fire an update to a Stats database?
+                await Clients.Caller.SendAsync("SyncResponse");
+            }
             catch (Exception ex)
             {
                 this.logger.LogError(ex, "An unexpected exception occurred while synchronizing indexes");
                 throw;
-			}
+            }
         }
     }
 }

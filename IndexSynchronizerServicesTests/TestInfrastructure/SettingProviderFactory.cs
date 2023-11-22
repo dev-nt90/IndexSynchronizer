@@ -9,25 +9,25 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
     /// </summary>
     public sealed class SettingProviderFactory
     {
-		private readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
-		public SettingProviderFactory()
-		{
-			_configuration = new ConfigurationBuilder().AddEnvironmentVariables().Build();
-		}
+        public SettingProviderFactory()
+        {
+            _configuration = new ConfigurationBuilder().AddEnvironmentVariables().Build();
+        }
 
-		public IConfiguration Configuration { get { return _configuration; } }
+        public IConfiguration Configuration { get { return _configuration; } }
 
-		public String BuildDatabaseUnderTestConnectionString()
-		{
-			var envConStr = Environment.GetEnvironmentVariable("MasterTestConnectionString") + ";TrustServerCertificate=true;Encrypt=False";
+        public String BuildDatabaseUnderTestConnectionString()
+        {
+            var envConStr = Environment.GetEnvironmentVariable("MasterTestConnectionString") + ";TrustServerCertificate=true;Encrypt=False";
 
-			return envConStr.Replace("master", "AdventureWorks"); // TODO: get db name from config
-		}
+            return envConStr.Replace("master", "AdventureWorks"); // TODO: get db name from config
+        }
 
-		public String BuildMasterDbConnectionString()
-		{
-			return Environment.GetEnvironmentVariable("MasterTestConnectionString") + ";TrustServerCertificate=true;Encrypt=False";
-		}
-	}
+        public String BuildMasterDbConnectionString()
+        {
+            return Environment.GetEnvironmentVariable("MasterTestConnectionString") + ";TrustServerCertificate=true;Encrypt=False";
+        }
+    }
 }

@@ -67,7 +67,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-	pattern: "{controller=IndexSync}/{action=IndexSync}/{id?}");
+    pattern: "{controller=IndexSync}/{action=IndexSync}/{id?}");
 
 app.MapRazorPages();
 app.MapHub<IndexSyncHub>("/IndexSyncHub");

@@ -58,7 +58,7 @@ namespace IndexSynchronizerServicesTests.TestInfrastructure
                     .AddLogging()
                     //.AddScoped(_ => settingProviderFactory.CreateConfig())
                     .InjectSoftwareUnderTest()
-					;
+                    ;
 
             return services;
         }
