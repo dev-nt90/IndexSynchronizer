@@ -1,17 +1,5 @@
 /*
- * 
  * TODO:
- * 
- * TESTS
- * 
- * *Write SQL query/procedure to output index definition of input table
- *     *Deploy sproc or keep logic internal to tool?
- *     *Support multiple database platforms? SQL Server, MySQL, Postgres? Introduces N complexity for back, maybe for middle.
- *         *SQL Server sys.indexes/tables/etc
- *         *MySQL performance.?
- *         *Postgres pg_indexes view
- * *Front-end input/logic for FQDN+Instance+Database+Table+User+Password (maybe database platform?)
- * *Front-end output/logic for index definitions
  * *Front-end button/logic to sync
  * *Front-end button/logic to only read these definitions (i.e. "preview")
  * *Front-end security 
@@ -20,12 +8,6 @@
  *     *input sanitation
  *     *Content Security Policy (CSP)
  * *Front/middle/back: toggle between sql and windows auth for DB access
- * *Middleware controllers
- * *Middleware logging
- * *Middleware exception handling
- * *Middleware database client(s)
- * *Middleware object mapping? Would this change on a per-database-platform case? SQL Server indexes have a number of options
- * *Easier to pass index definitions directly from A to B OR to issue middleware commands to apply index N? At the point of issuing commands, does it make sense to implement event stores? Other DDD techniques?
  * *Statistics monitoring i.e. when was the last time these indexes were synchronized? 
  *     *Requires tracking on a per-database (per-user?) level
  *     *Would be helpful to capture user information
@@ -33,8 +15,18 @@
  * *Registration/Authentication
  *     *In-memory? sqlite?
  *     *This area requires the most research
+ 
+ * *Desperate back-end need for certs
+ * 
+ * ENHANCEMENTS
+ * 
+ * *The name might be "index" sync, but there's no reason for that to not extend to other parts of a given schema.
+ * *With a kinda functioning CI pipeline, it's time to make some automated tests
+ *     *CI pipeline needs secret management
+ * *Support for multiple platforms in addition to sql server. Oracle, postgres, etc. To get this to work would require mapping syntax from db a to db b. Makes this more like a schema transformer.
  * *"Strict" option to only allow exact table name matches? e.g. don't want to over TableB with TbleA
  */
+
 using IndexSynchronizer.Hubs;
 using IndexSynchronizerServices.DependencyInjection;
 
